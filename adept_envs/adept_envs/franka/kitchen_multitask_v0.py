@@ -129,6 +129,16 @@ class KitchenV0(robot_env.RobotEnv):
         if self.goal_concat:
             return np.concatenate([self.obs_dict['qp'], self.obs_dict['obj_qp'], self.obs_dict['goal']])
 
+    ###===###
+    def get_obs(self):
+        """
+        Putting this in here so that LAEO code can access the _get_obs function. Throws a "trying to access
+        private attribute" error.
+        """
+        return self._get_obs()
+
+    ###---###
+
     def reset_model(self):
         reset_pos = self.init_qpos[:].copy()
         reset_vel = self.init_qvel[:].copy()
@@ -188,9 +198,10 @@ class KitchenTaskRelaxV1(KitchenV0):
         score = 0.
         return reward_dict, score
 
-    def render(self, mode='human'):
+    def render(self, mode='human', size=(1920, 2550)):
         if mode =='rgb_array':
-            camera = engine.MovableCamera(self.sim, 1920, 2560)
+            # camera = engine.MovableCamera(self.sim, 1920, 2560)
+            camera = engine.MovableCamera(self.sim, size[0], size[1])
             camera.set_pose(distance=2.2, lookat=[-0.2, .5, 2.], azimuth=70, elevation=-35)
             img = camera.render()
             return img

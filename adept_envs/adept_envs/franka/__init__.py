@@ -18,7 +18,8 @@ from gym.envs.registration import register
 
 # Relax the robot
 register(
-    id='kitchen_relax-v1',
+    # id='kitchen_relax_-v1', ###===###
+    id='kitchen_relax_rpl-v1', ###---###
     entry_point='adept_envs.franka.kitchen_multitask_v0:KitchenTaskRelaxV1',
     max_episode_steps=280,
 )

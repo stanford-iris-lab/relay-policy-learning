@@ -20,6 +20,9 @@ import pickle
 import numpy as np
 from parse_mjl import parse_mjl_logs, viz_parsed_mjl_logs
 from mjrl.utils.gym_env import GymEnv
+
+import sys; sys.path.append("/iris/u/khatch/preliminary_experiments/model_based_offline_online/relay-policy-learning/adept_envs")
+
 import adept_envs
 import time as timer
 import skvideo.io
